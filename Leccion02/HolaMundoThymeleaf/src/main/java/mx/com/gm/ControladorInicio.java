@@ -1,5 +1,7 @@
 package mx.com.gm;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import lombok.extern.slf4j.Slf4j;
 import mx.com.gm.domain.Persona;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,11 +26,24 @@ public class ControladorInicio {
         persona.setEmail("a_martinez@mail.com");
         persona.setTelefono("2841009117");
         
+        var persona2 = new Persona();
+        persona2.setNombre("Araceli");
+        persona2.setApellido("Campos");
+        persona2.setEmail("a_campos@mail.com");
+        persona2.setTelefono("2841102489");
+        
+//        var personas = new ArrayList();
+//        personas.add(persona);
+//        personas.add(persona2);
+        
+        var personas = Arrays.asList(persona, persona2);
+        
         log.info("Ejecutando el controlador Spring MVC");
         model.addAttribute("mensaje", mensaje);
         model.addAttribute("saludo", saludo);
         
-        model.addAttribute("persona", persona);
+//        model.addAttribute("persona", persona);
+        model.addAttribute("personas", personas);
         return "index";
     }
 }
